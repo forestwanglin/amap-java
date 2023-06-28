@@ -26,23 +26,21 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
-public class AmapService {
+public class AmapOpenApiService {
 
     private static final String BASE_URL = "https://restapi.amap.com";
     private static final Duration DEFAULT_TIMEOUT = Duration.ofSeconds(30);
 
     private final String key;
-    private final AmapApi api;
-    private final OkHttpClient client;
+    private final AmapOpenApi api;
 
-    public AmapService(final String key) {
-        this(key, buildApi(DEFAULT_TIMEOUT), defaultClient(DEFAULT_TIMEOUT));
+    public AmapOpenApiService(final String key) {
+        this(key, buildApi(DEFAULT_TIMEOUT));
     }
 
-    public AmapService(final String key, final AmapApi api, final OkHttpClient client) {
+    public AmapOpenApiService(final String key, final AmapOpenApi api) {
         this.key = key;
         this.api = api;
-        this.client = client;
     }
 
     public static <T> T execute(Single<T> apiCall) {
@@ -61,11 +59,11 @@ public class AmapService {
         }
     }
 
-    public static AmapApi buildApi(Duration timeout) {
+    public static AmapOpenApi buildApi(Duration timeout) {
         ObjectMapper mapper = defaultObjectMapper();
         OkHttpClient client = defaultClient(timeout);
         Retrofit retrofit = defaultRetrofit(client, mapper);
-        return retrofit.create(AmapApi.class);
+        return retrofit.create(AmapOpenApi.class);
     }
 
     public static ObjectMapper defaultObjectMapper() {

@@ -18,20 +18,20 @@ import xyz.felh.amap.response.weather.WeatherResponse;
 
 import java.time.Duration;
 
-import static xyz.felh.amap.AmapService.*;
+import static xyz.felh.amap.AmapOpenApiService.*;
 
 @Slf4j
 public class AmapServiceTest {
 
-    private AmapService getAmapService() {
+    private AmapOpenApiService getAmapService() {
         String key = System.getenv("KEY");
         ObjectMapper mapper = defaultObjectMapper();
         OkHttpClient client = defaultClient(Duration.ofMillis(300000))
                 .newBuilder()
                 .build();
         Retrofit retrofit = defaultRetrofit(client, mapper);
-        AmapApi api = retrofit.create(AmapApi.class);
-        return new AmapService(key, api, client);
+        AmapOpenApi api = retrofit.create(AmapOpenApi.class);
+        return new AmapOpenApiService(key, api);
     }
 
     @Test

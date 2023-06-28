@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Retrofit2 API interface
  */
-public interface AmapApi {
+public interface AmapOpenApi {
 
     /**
      * 地理编码/逆地理编码 API 是通过 HTTP/HTTPS 协议访问远程服务的接口，提供结构化地址与经纬度之间的相互转化的能力。
