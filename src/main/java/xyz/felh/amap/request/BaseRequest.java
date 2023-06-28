@@ -20,7 +20,6 @@ public abstract class BaseRequest implements Serializable {
     /**
      * 用户在高德地图官网申请Web服务API类型Key
      */
-//    @NonNull
     @JsonProperty("key")
     @JSONField(name = "key")
     private String key;

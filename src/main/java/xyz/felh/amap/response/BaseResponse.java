@@ -1,5 +1,7 @@
 package xyz.felh.amap.response;
 
+import com.alibaba.fastjson2.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.ToString;
 
@@ -15,11 +17,6 @@ public abstract class BaseResponse implements Serializable {
     private int status;
 
     /**
-     * 返回结果的个数。
-     */
-    private int count;
-
-    /**
      * 当 status 为 0 时，info 会返回具体错误原因，否则返回“OK”。
      */
     private String info;
@@ -27,6 +24,8 @@ public abstract class BaseResponse implements Serializable {
     /**
      * 对应info的code
      */
-    private int infocode;
+    @JsonProperty("infocode")
+    @JSONField(name = "infocode")
+    private int infoCode;
 
 }

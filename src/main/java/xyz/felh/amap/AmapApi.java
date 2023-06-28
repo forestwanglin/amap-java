@@ -5,6 +5,8 @@ import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
 import xyz.felh.amap.response.geocode.GeoCodeRegeoResponse;
 import xyz.felh.amap.response.geocode.GeoCodeResponse;
+import xyz.felh.amap.response.ip.IpResponse;
+import xyz.felh.amap.response.weather.WeatherResponse;
 
 import java.util.Map;
 
@@ -27,5 +29,18 @@ public interface AmapApi {
     @GET("/v3/geocode/regeo")
     Single<GeoCodeRegeoResponse> geoCodeRegeo(@QueryMap Map<String, String> map);
 
+
+    /**
+     * IP定位是一套简单的HTTP接口，根据用户输入的IP地址，能够快速的帮用户定位IP的所在位置。
+     * IP定位：仅支持IPV4，不支持国外IP解析。
+     */
+    @GET("/v3/ip")
+    Single<IpResponse> ip(@QueryMap Map<String, String> map);
+
+    /**
+     * 天气查询是一个简单的HTTP接口，根据用户输入的adcode，查询目标区域当前/未来的天气情况，数据来源是中国气象局。
+     */
+    @GET("/v3/weather/weatherInfo")
+    Single<WeatherResponse> weather(@QueryMap Map<String, String> map);
 
 }

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import xyz.felh.amap.request.BaseRequest;
-import xyz.felh.amap.request.ExtensionsType;
+import xyz.felh.amap.request.Extensions;
 
 import java.util.Map;
 
@@ -44,7 +44,7 @@ public class GeoCodeRegeoRequest extends BaseRequest {
      */
     @JsonProperty("extensions")
     @JSONField(name = "extensions")
-    private ExtensionsType extensions;
+    private Extensions extensions;
 
     /**
      * 以下内容需要 extensions 参数为 all 时才生效。
@@ -84,7 +84,7 @@ public class GeoCodeRegeoRequest extends BaseRequest {
         }
         if (extensions != null) {
             map.put("extensions", extensions.value());
-            if (extensions == ExtensionsType.ALL) {
+            if (extensions == Extensions.ALL) {
                 if (roadlevel != null) {
                     map.put("roadlevel", roadlevel.toString());
                 }

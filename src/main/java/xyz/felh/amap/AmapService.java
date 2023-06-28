@@ -14,8 +14,12 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 import xyz.felh.amap.request.geocode.GeoCodeRegeoRequest;
 import xyz.felh.amap.request.geocode.GeoCodeRequest;
+import xyz.felh.amap.request.ip.IpRequest;
+import xyz.felh.amap.request.weather.WeatherRequest;
 import xyz.felh.amap.response.geocode.GeoCodeRegeoResponse;
 import xyz.felh.amap.response.geocode.GeoCodeResponse;
+import xyz.felh.amap.response.ip.IpResponse;
+import xyz.felh.amap.response.weather.WeatherResponse;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -99,6 +103,16 @@ public class AmapService {
     public GeoCodeRegeoResponse geoCodeRegeo(GeoCodeRegeoRequest request) {
         request.setKey(key);
         return execute(api.geoCodeRegeo(request.toQueryMap()));
+    }
+
+    public IpResponse ip(IpRequest request) {
+        request.setKey(key);
+        return execute(api.ip(request.toQueryMap()));
+    }
+
+    public WeatherResponse weather(WeatherRequest request) {
+        request.setKey(key);
+        return execute(api.weather(request.toQueryMap()));
     }
 
 }

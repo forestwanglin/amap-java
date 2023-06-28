@@ -15,6 +15,11 @@ import java.util.List;
 public class GeoCodeResponse extends BaseResponse {
 
     /**
+     * 返回结果的个数。
+     */
+    private Integer count;
+
+    /**
      * 地理编码信息列表
      */
     @JsonProperty("geocodes")

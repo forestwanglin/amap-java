@@ -7,14 +7,14 @@ import lombok.Getter;
 import java.util.Arrays;
 
 @Getter
-public enum ExtensionsType {
+public enum Extensions {
 
     BASE("base"),
     ALL("all");
 
     private final String value;
 
-    ExtensionsType(String value) {
+    Extensions(String value) {
         this.value = value;
     }
 
@@ -24,7 +24,7 @@ public enum ExtensionsType {
     }
 
     @JsonCreator
-    public ExtensionsType fromValue(String value) {
+    public Extensions fromValue(String value) {
         return Arrays.stream(values()).filter(it ->
                 it.getValue().equals(value)).findFirst().orElse(null);
     }
