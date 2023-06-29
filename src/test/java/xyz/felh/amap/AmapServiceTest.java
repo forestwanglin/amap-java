@@ -7,10 +7,12 @@ import okhttp3.OkHttpClient;
 import org.junit.jupiter.api.Test;
 import retrofit2.Retrofit;
 import xyz.felh.amap.request.Extensions;
+import xyz.felh.amap.request.district.DistrictRequest;
 import xyz.felh.amap.request.geocode.GeoCodeRegeoRequest;
 import xyz.felh.amap.request.geocode.GeoCodeRequest;
 import xyz.felh.amap.request.ip.IpRequest;
 import xyz.felh.amap.request.weather.WeatherRequest;
+import xyz.felh.amap.response.district.DistrictResponse;
 import xyz.felh.amap.response.geocode.GeoCodeRegeoResponse;
 import xyz.felh.amap.response.geocode.GeoCodeResponse;
 import xyz.felh.amap.response.ip.IpResponse;
@@ -64,9 +66,19 @@ public class AmapServiceTest {
     public void weather() {
         WeatherResponse response = getAmapService().weather(WeatherRequest.builder()
                 .city("110101")
-                        .extensions(Extensions.ALL)
+                .extensions(Extensions.ALL)
                 .build());
         log.info("weather: {}", JSON.toJSONString(response));
+    }
+
+    @Test
+    public void district() {
+        DistrictResponse response = getAmapService().district(DistrictRequest.builder()
+                .keywords("上海市")
+                .extensions(Extensions.ALL)
+                .subDistrict(3)
+                .build());
+        log.info("district: {}", JSON.toJSONString(response));
     }
 
 }

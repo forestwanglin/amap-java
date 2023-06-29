@@ -3,6 +3,7 @@ package xyz.felh.amap;
 import io.reactivex.rxjava3.core.Single;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
+import xyz.felh.amap.response.district.DistrictResponse;
 import xyz.felh.amap.response.geocode.GeoCodeRegeoResponse;
 import xyz.felh.amap.response.geocode.GeoCodeResponse;
 import xyz.felh.amap.response.ip.IpResponse;
@@ -42,5 +43,11 @@ public interface AmapOpenApi {
      */
     @GET("/v3/weather/weatherInfo")
     Single<WeatherResponse> weather(@QueryMap Map<String, String> map);
+
+    /**
+     * 行政区域查询是一类简单的HTTP接口，根据用户输入的搜索条件可以帮助用户快速的查找特定的行政区域信息。
+     */
+    @GET("/v3/config/district")
+    Single<DistrictResponse> district(@QueryMap Map<String, String> map);
 
 }

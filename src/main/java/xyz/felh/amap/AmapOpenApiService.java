@@ -12,10 +12,12 @@ import retrofit2.HttpException;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
+import xyz.felh.amap.request.district.DistrictRequest;
 import xyz.felh.amap.request.geocode.GeoCodeRegeoRequest;
 import xyz.felh.amap.request.geocode.GeoCodeRequest;
 import xyz.felh.amap.request.ip.IpRequest;
 import xyz.felh.amap.request.weather.WeatherRequest;
+import xyz.felh.amap.response.district.DistrictResponse;
 import xyz.felh.amap.response.geocode.GeoCodeRegeoResponse;
 import xyz.felh.amap.response.geocode.GeoCodeResponse;
 import xyz.felh.amap.response.ip.IpResponse;
@@ -111,6 +113,11 @@ public class AmapOpenApiService {
     public WeatherResponse weather(WeatherRequest request) {
         request.setKey(key);
         return execute(api.weather(request.toQueryMap()));
+    }
+
+    public DistrictResponse district(DistrictRequest request) {
+        request.setKey(key);
+        return execute(api.district(request.toQueryMap()));
     }
 
 }
